@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Survey</title>
+  </head>
+  <body>
+    <div>
+	    <label>Name:</label><br>
+      <input type="text" id="name">
+    </div>
+    <div>
+	    <label>Computer or Phone:</label><br>
+      <input type="text" id="device">
+    </div>
+    <button id="start-btn">Start Survey</button>
+    <div id="survey-container" style="display: none;">
+      <h3>Survey</h3>
+      <form>
+        <label>Question 1: What is your favourote colour ? </label><br>
+        <textarea id="q1-answer" rows="3"></textarea><br>
+        <label>Question 2: write any country name.</label><br>
+        <textarea id="q2-answer" rows="3"></textarea><br>
+        <label>Question 3: How many continent in the world?</label><br>
+        <textarea id="q3-answer" rows="3"></textarea><br>
+        <label>Question 4: How many moon earth has? </label><br>
+        <textarea id="q4-answer" rows="3"></textarea><br>
+        <label>Question 5: What is the planet the moon revolve around ?</label><br>
+        <textarea id="q5-answer" rows="3"></textarea><br>
+<label>Question 6: Select the triangle.</label><br>
+<input type="radio" id="triangle" name="shape" value="triangle">
+<label for="triangle"><img src="triangle.png" alt="Triangle"></label><br>
+<input type="radio" id="square" name="shape" value="square">
+<label for="square"><img src="square.png" alt="Square"></label><br>
+<input type="radio" id="circle" name="shape" value="circle">
+<label for="circle"><img src="circle.png" alt="Circle"></label><br><br>
+
+<label>Question 7: Which of the following color is Green.</label><br>
+<input type="radio" id="green" name="color" value="green">
+<label for="green"><img src="green.png" alt="green"></label><br>
+<input type="radio" id="blue" name="color" value="blue">
+<label for="blue"><img src="blue.png" alt="blue"></label><br>
+<input type="radio" id="red" name="color" value="red">
+<label for="red"><img src="red.png" alt="red"></label><br>
+
+
+<style>
+label img {
+  display: block;
+  margin-left: 10px;
+  width: 50px;
+  height: 50px;
+}
+</style>
+
+
+
+
+	<button id="submit-btn">Submit</button>
+      </form>
+    </div>
+
+    <script>
+      const startBtn = document.getElementById("start-btn");
+      const surveyContainer = document.getElementById("survey-container");
+      const submitBtn = document.getElementById("submit-btn");
+
+      startBtn.addEventListener("click", () => {
+        surveyContainer.style.display = "block";
+        startBtn.style.display = "none";
+        const startTime = new Date();
+        submitBtn.addEventListener("click", () => {
+          const endTime = new Date();
+          const surveyResults = {
+            Name: document.getElementById("name").value,
+            Device: document.getElementById("device").value,
+            Answer1: document.getElementById("q1-answer").value,
+            Answer2: document.getElementById("q2-answer").value,
+            Answer3: document.getElementById("q3-answer").value,
+            Answer4: document.getElementById("q4-answer").value,
+            Answer5: document.getElementById("q5-answer").value,
+            Answer6: document.querySelector('input[name="shape"]:checked').value,
+            Answer7: document.querySelector('input[name="color"]:checked').value,
+            time: (endTime - startTime) / 1000 // time in seconds
+          };
+          const fileContent = JSON.stringify(surveyResults);
+          const fileBlob = new Blob([fileContent], { type: "text/plain" });
+          const fileUrl = URL.createObjectURL(fileBlob);
+          const fileLink = document.createElement("a");
+          fileLink.href = fileUrl;
+          fileLink.download = "survey-results.txt";
+          document.body.appendChild(fileLink);
+          fileLink.click();
+          document.body.removeChild(fileLink);
+        });
+      });
+    </script>
+  </body>
+</html>
