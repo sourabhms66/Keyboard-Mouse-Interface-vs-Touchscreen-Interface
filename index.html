@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Survey</title>
+
+
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.5;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    input,
+    textarea {
+      display: block;
+       width: 100%; 
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+      font-size: 16px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+
+    button {
+      display: block;
+      padding: 10px 20px;
+      margin-bottom: 20px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    button:hover {
+      background-color: #0069d9;
+    }
+
+    #survey-container {
+      margin-top: 20px;
+    }
+
+    #survey-container h3 {
+      margin-bottom: 20px;
+      font-size: 24px;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    #survey-container form {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    #survey-container input[type="radio"] {
+      display: inline-block;
+      width: auto;
+      margin-right: 10px;
+    }
+
+    #survey-container label {
+      display: inline-block;
+      margin-right: 20px;
+    }
+
+    #survey-container button {
+      margin-top: 30px;
+    }
+
+    label img {
+      display: inline-block;
+      width: 50px;
+      height: 50px;
+      vertical-align: middle;
+      margin-right: 10px;
+    }
+
+    @media only screen and (max-width: 320px) {
+      body {
+        font-size: 14px;
+      }
+    }
+
+body {
+  background-image: url('https://example.com/background-image.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+body {
+  background-image: url('b.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+
+
+
+  </style>
+
+
+
+
+
+
+
+
+	<script type="text/javascript" src="https://tiiny.host/ad-script.js"></script><script defer data-domain="jade-esther-82.tiiny.site" src="https://analytics.tiiny.site/js/plausible.js"></script></head>
+	<body>
+		<div>
+			
+			<label>Name:</label><br>
+			<input type="text" id="name">
+		</div>
+		<div>
+			<label>Desktop or Phone:</label><br>
+			<input type="text" id="device">
+		</div>
+		<button id="start-btn">Start Survey</button>
+		<div id="survey-container" style="display: none;">
+			<h3>Survey</h3>
+			<form>
+				<label>Question 1: What is your favourote colour ? </label><br>
+				<textarea id="q1-answer" rows="3"></textarea><br>
+				<label>Question 2: write any country name.</label><br>
+				<textarea id="q2-answer" rows="3"></textarea><br>
+				<label>Question 3: How many continent in the world?</label><br>
+				<textarea id="q3-answer" rows="3"></textarea><br>
+				<label>Question 4: How many moon earth has? </label><br>
+				<textarea id="q4-answer" rows="3"></textarea><br>
+				<label>Question 5: What is the planet the moon revolve around ?</label><br>
+				<textarea id="q5-answer" rows="3"></textarea><br>
+				<label>Question 6: Select the triangle.</label><br>
+				<input type="radio" id="triangle" name="shape" value="triangle">
+				<label for="triangle"><img src="triangle.png" alt="Triangle"></label><br>
+				<input type="radio" id="square" name="shape" value="square">
+				<label for="square"><img src="square.png" alt="Square"></label><br>
+				<input type="radio" id="circle" name="shape" value="circle">
+				<label for="circle"><img src="circle.png" alt="Circle"></label><br><br>
+
+				<label>Question 7: which of the following is green ?</label><br>
+				<input type="radio" id="pink" name="colour" value="pink">
+				<label for="triangle"><img src="pink.png" alt="pink"></label><br>
+				<input type="radio" id="green" name="colour" value="green">
+				<label for="square"><img src="green.png" alt="green"></label><br>
+				<input type="radio" id="blue" name="colour" value="blue">
+				<label for="circle"><img src="blue.png" alt="blue"></label><br><br>
+
+
+<label>Question 8: which of the following is tiger ?</label><br>
+<input type="radio" id="tiger" name="animal" value="tiger">
+<label for="tiger"><img src="tiger.png" alt="tiger"></label><br>
+<input type="radio" id="lion" name="animal" value="lion">
+<label for="lion"><img src="lion.png" alt="lion"></label><br>
+<input type="radio" id="elephant" name="animal" value="elephant">
+<label for="elephant"><img src="elephant.png" alt="elephant"></label><br><br>
+
+<label>Question 9: which of the following is a 2 wheeler ?</label><br>
+<input type="radio" id="car" name="vehicle" value="car">
+<label for="car"><img src="car.png" alt="car"></label><br>
+<input type="radio" id="bike" name="vehicle" value="bike">
+<label for="bike"><img src="bike.png" alt="bike"></label><br>
+<input type="radio" id="plane" name="vehicle" value="plane">
+<label for="plane"><img src="plane.png" alt="plane"></label><br><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+				<style>
+label img {
+	display: block;
+	margin-left: 10px;
+	width: 50px;
+	height: 50px;
+}
+				</style>
+
+
+
+
+				<button id="submit-btn">Submit</button>
+			</form>
+		</div>
+
+		<script>
+			const startBtn = document.getElementById("start-btn");
+			const surveyContainer = document.getElementById("survey-container");
+			const submitBtn = document.getElementById("submit-btn");
+
+			startBtn.addEventListener("click", () => {
+							surveyContainer.style.display = "block";
+							startBtn.style.display = "none";
+							const startTime = new Date();
+							submitBtn.addEventListener("click", () => {
+											const endTime = new Date();
+											const surveyResults = {
+															name: document.getElementById("name").value,
+															device: document.getElementById("device").value,
+															q1: document.getElementById("q1-answer").value,
+															q2: document.getElementById("q2-answer").value,
+															q3: document.getElementById("q3-answer").value,
+															q4: document.getElementById("q4-answer").value,
+															q5: document.getElementById("q5-answer").value,
+															q6: document.querySelector('input[name="shape"]:checked').value,
+															q7: document.querySelector('input[name="colour"]:checked').value,
+                                                                                                                        q8: document.querySelector('input[name="animal"]:checked').value,  
+                                                                                                                        q9: document.querySelector('input[name="vehicle"]:checked').value,  
+															time: (endTime - startTime) / 1000 // time in seconds
+														};
+											const fileContent = JSON.stringify(surveyResults);
+											const fileBlob = new Blob([fileContent], { type: "text/plain" });
+											const fileUrl = URL.createObjectURL(fileBlob);
+											const fileLink = document.createElement("a");
+											fileLink.href = fileUrl;
+											fileLink.download = "survey-results.txt";
+											document.body.appendChild(fileLink);
+											fileLink.click();
+											document.body.removeChild(fileLink);
+										});
+						});
+		</script>
+	</body>
+</html>
