@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<title>Survey</title>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Survey</title>
 
 
 
@@ -28,7 +29,7 @@
     input,
     textarea {
       display: block;
-       width: 100%; 
+      width: 100%;
       padding: 10px;
       margin-bottom: 20px;
       border: 1px solid #ccc;
@@ -105,21 +106,81 @@
       }
     }
 
-body {
-  background-image: url('https://example.com/background-image.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
-}
+    body {
+      background-image: url('https://example.com/background-image.jpg');
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
 
-body {
-  background-image: url('b.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
-}
+    body {
+      background-image: url('b.jpg');
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
 
+    .mySlides {
+      display: none
+    }
 
+    img {
+      vertical-align: middle;
+    }
 
+    /* Slideshow container */
+    .slideshow-container {
+      max-width: 250px;
+      position: relative;
+      margin: 1px;
+    }
 
+    /* Next & previous buttons */
+    .prev,
+    .next {
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      width: auto;
+      padding: 16px;
+      margin-top: -22px;
+      color: white;
+      font-weight: bold;
+      font-size: 18px;
+      transition: 0.6s ease;
+      border-radius: 0 3px 3px 0;
+      user-select: none;
+    }
+
+    /* Position the "next button" to the right */
+    .next {
+      right: 0;
+      border-radius: 3px 0 0 3px;
+    }
+
+    /* On hover, add a black background color with a little bit seethrough */
+    .prev:hover,
+    .next:hover {
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    /* Caption text */
+    .text {
+      color: black;
+      font-size: 15px;
+      padding: 8px 12px;
+      position: absolute;
+      bottom: 8px;
+      width: 100%;
+      text-align: center;
+    }
+
+    /* Number text (1/3 etc) */
+    .numbertext {
+      color: #f2f2f2;
+      font-size: 12px;
+      padding: 8px 12px;
+      position: absolute;
+      top: 0;
+    }
   </style>
 
 
@@ -129,65 +190,318 @@ body {
 
 
 
-	<script type="text/javascript" src="https://tiiny.host/ad-script.js"></script><script defer data-domain="jade-esther-82.tiiny.site" src="https://analytics.tiiny.site/js/plausible.js"></script></head>
-	<body>
-		<div>
-			
-			<label>Name:</label><br>
-			<input type="text" id="name">
-		</div>
-		<div>
-			<label>Desktop or Phone:</label><br>
-			<input type="text" id="device">
-		</div>
-		<button id="start-btn">Start Survey</button>
-		<div id="survey-container" style="display: none;">
-			<h3>Survey</h3>
-			<form>
-				<label>Question 1: What is your favourote colour ? </label><br>
-				<textarea id="q1-answer" rows="3"></textarea><br>
-				<label>Question 2: write any country name.</label><br>
-				<textarea id="q2-answer" rows="3"></textarea><br>
-				<label>Question 3: How many continent in the world?</label><br>
-				<textarea id="q3-answer" rows="3"></textarea><br>
-				<label>Question 4: How many moon earth has? </label><br>
-				<textarea id="q4-answer" rows="3"></textarea><br>
-				<label>Question 5: What is the planet the moon revolve around ?</label><br>
-				<textarea id="q5-answer" rows="3"></textarea><br>
-				<label>Question 6: Select the triangle.</label><br>
-				<input type="radio" id="triangle" name="shape" value="triangle">
-				<label for="triangle"><img src="triangle.png" alt="Triangle"></label><br>
-				<input type="radio" id="square" name="shape" value="square">
-				<label for="square"><img src="square.png" alt="Square"></label><br>
-				<input type="radio" id="circle" name="shape" value="circle">
-				<label for="circle"><img src="circle.png" alt="Circle"></label><br><br>
+  <script type="text/javascript" src="https://tiiny.host/ad-script.js"></script>
+  <script defer data-domain="jade-esther-82.tiiny.site" src="https://analytics.tiiny.site/js/plausible.js"></script>
+</head>
 
-				<label>Question 7: which of the following is green ?</label><br>
-				<input type="radio" id="pink" name="colour" value="pink">
-				<label for="triangle"><img src="pink.png" alt="pink"></label><br>
-				<input type="radio" id="green" name="colour" value="green">
-				<label for="square"><img src="green.png" alt="green"></label><br>
-				<input type="radio" id="blue" name="colour" value="blue">
-				<label for="circle"><img src="blue.png" alt="blue"></label><br><br>
+<body>
+  <div>
+
+    <label>Name:</label><br>
+    <input type="text" id="name">
+  </div>
+  <div>
+    <label>Desktop or Phone:</label><br>
+    <input type="text" id="device">
+  </div>
+  <button id="start-btn">Start Survey</button>
+  <div id="survey-container" style="display: none;">
+    <h3>Survey</h3>
+    <form>
+      <label>Question 1: What is your favourote colour ? </label><br>
+      <textarea id="q1-answer" rows="3"></textarea><br>
+      <label>Question 2: Select a country.</label><br>
+      <!-- <textarea id="q2-answer" rows="3"></textarea> -->
+      <select name="q2-answer" id="q2-answer" style="height:30px;">
+        <option>Select Country</option>
+        <option value="Afghanistan">Afghanistan</option>
+        <option value="Åland Islands">Åland Islands</option>
+        <option value="Albania">Albania</option>
+        <option value="Algeria">Algeria</option>
+        <option value="American Samoa">American Samoa</option>
+        <option value="Andorra">Andorra</option>
+        <option value="Angola">Angola</option>
+        <option value="Anguilla">Anguilla</option>
+        <option value="Antarctica">Antarctica</option>
+        <option value="Antigua and Barbuda">Antigua and Barbuda</option>
+        <option value="Argentina">Argentina</option>
+        <option value="Armenia">Armenia</option>
+        <option value="Aruba">Aruba</option>
+        <option value="Australia">Australia</option>
+        <option value="Austria">Austria</option>
+        <option value="Azerbaijan">Azerbaijan</option>
+        <option value="Bahamas">Bahamas</option>
+        <option value="Bahrain">Bahrain</option>
+        <option value="Bangladesh">Bangladesh</option>
+        <option value="Barbados">Barbados</option>
+        <option value="Belarus">Belarus</option>
+        <option value="Belgium">Belgium</option>
+        <option value="Belize">Belize</option>
+        <option value="Benin">Benin</option>
+        <option value="Bermuda">Bermuda</option>
+        <option value="Bhutan">Bhutan</option>
+        <option value="Bolivia">Bolivia</option>
+        <option value="Bosnia and Herzegovina">Bosnia and Herzegovina</option>
+        <option value="Botswana">Botswana</option>
+        <option value="Bouvet Island">Bouvet Island</option>
+        <option value="Brazil">Brazil</option>
+        <option value="British Indian Ocean Territory">British Indian Ocean Territory</option>
+        <option value="Brunei Darussalam">Brunei Darussalam</option>
+        <option value="Bulgaria">Bulgaria</option>
+        <option value="Burkina Faso">Burkina Faso</option>
+        <option value="Burundi">Burundi</option>
+        <option value="Cambodia">Cambodia</option>
+        <option value="Cameroon">Cameroon</option>
+        <option value="Canada">Canada</option>
+        <option value="Cape Verde">Cape Verde</option>
+        <option value="Cayman Islands">Cayman Islands</option>
+        <option value="Central African Republic">Central African Republic</option>
+        <option value="Chad">Chad</option>
+        <option value="Chile">Chile</option>
+        <option value="China">China</option>
+        <option value="Christmas Island">Christmas Island</option>
+        <option value="Cocos (Keeling) Islands">Cocos (Keeling) Islands</option>
+        <option value="Colombia">Colombia</option>
+        <option value="Comoros">Comoros</option>
+        <option value="Congo">Congo</option>
+        <option value="Congo, The Democratic Republic of The">Congo, The Democratic Republic of The</option>
+        <option value="Cook Islands">Cook Islands</option>
+        <option value="Costa Rica">Costa Rica</option>
+        <option value="Cote D'ivoire">Cote D'ivoire</option>
+        <option value="Croatia">Croatia</option>
+        <option value="Cuba">Cuba</option>
+        <option value="Cyprus">Cyprus</option>
+        <option value="Czech Republic">Czech Republic</option>
+        <option value="Denmark">Denmark</option>
+        <option value="Djibouti">Djibouti</option>
+        <option value="Dominica">Dominica</option>
+        <option value="Dominican Republic">Dominican Republic</option>
+        <option value="Ecuador">Ecuador</option>
+        <option value="Egypt">Egypt</option>
+        <option value="El Salvador">El Salvador</option>
+        <option value="Equatorial Guinea">Equatorial Guinea</option>
+        <option value="Eritrea">Eritrea</option>
+        <option value="Estonia">Estonia</option>
+        <option value="Ethiopia">Ethiopia</option>
+        <option value="Falkland Islands (Malvinas)">Falkland Islands (Malvinas)</option>
+        <option value="Faroe Islands">Faroe Islands</option>
+        <option value="Fiji">Fiji</option>
+        <option value="Finland">Finland</option>
+        <option value="France">France</option>
+        <option value="French Guiana">French Guiana</option>
+        <option value="French Polynesia">French Polynesia</option>
+        <option value="French Southern Territories">French Southern Territories</option>
+        <option value="Gabon">Gabon</option>
+        <option value="Gambia">Gambia</option>
+        <option value="Georgia">Georgia</option>
+        <option value="Germany">Germany</option>
+        <option value="Ghana">Ghana</option>
+        <option value="Gibraltar">Gibraltar</option>
+        <option value="Greece">Greece</option>
+        <option value="Greenland">Greenland</option>
+        <option value="Grenada">Grenada</option>
+        <option value="Guadeloupe">Guadeloupe</option>
+        <option value="Guam">Guam</option>
+        <option value="Guatemala">Guatemala</option>
+        <option value="Guernsey">Guernsey</option>
+        <option value="Guinea">Guinea</option>
+        <option value="Guinea-bissau">Guinea-bissau</option>
+        <option value="Guyana">Guyana</option>
+        <option value="Haiti">Haiti</option>
+        <option value="Heard Island and Mcdonald Islands">Heard Island and Mcdonald Islands</option>
+        <option value="Holy See (Vatican City State)">Holy See (Vatican City State)</option>
+        <option value="Honduras">Honduras</option>
+        <option value="Hong Kong">Hong Kong</option>
+        <option value="Hungary">Hungary</option>
+        <option value="Iceland">Iceland</option>
+        <option value="India">India</option>
+        <option value="Indonesia">Indonesia</option>
+        <option value="Iran, Islamic Republic of">Iran, Islamic Republic of</option>
+        <option value="Iraq">Iraq</option>
+        <option value="Ireland">Ireland</option>
+        <option value="Isle of Man">Isle of Man</option>
+        <option value="Israel">Israel</option>
+        <option value="Italy">Italy</option>
+        <option value="Jamaica">Jamaica</option>
+        <option value="Japan">Japan</option>
+        <option value="Jersey">Jersey</option>
+        <option value="Jordan">Jordan</option>
+        <option value="Kazakhstan">Kazakhstan</option>
+        <option value="Kenya">Kenya</option>
+        <option value="Kiribati">Kiribati</option>
+        <option value="Korea, Democratic People's Republic of">Korea, Democratic People's Republic of</option>
+        <option value="Korea, Republic of">Korea, Republic of</option>
+        <option value="Kuwait">Kuwait</option>
+        <option value="Kyrgyzstan">Kyrgyzstan</option>
+        <option value="Lao People's Democratic Republic">Lao People's Democratic Republic</option>
+        <option value="Latvia">Latvia</option>
+        <option value="Lebanon">Lebanon</option>
+        <option value="Lesotho">Lesotho</option>
+        <option value="Liberia">Liberia</option>
+        <option value="Libyan Arab Jamahiriya">Libyan Arab Jamahiriya</option>
+        <option value="Liechtenstein">Liechtenstein</option>
+        <option value="Lithuania">Lithuania</option>
+        <option value="Luxembourg">Luxembourg</option>
+        <option value="Macao">Macao</option>
+        <option value="Macedonia, The Former Yugoslav Republic of">Macedonia, The Former Yugoslav Republic of</option>
+        <option value="Madagascar">Madagascar</option>
+        <option value="Malawi">Malawi</option>
+        <option value="Malaysia">Malaysia</option>
+        <option value="Maldives">Maldives</option>
+        <option value="Mali">Mali</option>
+        <option value="Malta">Malta</option>
+        <option value="Marshall Islands">Marshall Islands</option>
+        <option value="Martinique">Martinique</option>
+        <option value="Mauritania">Mauritania</option>
+        <option value="Mauritius">Mauritius</option>
+        <option value="Mayotte">Mayotte</option>
+        <option value="Mexico">Mexico</option>
+        <option value="Micronesia, Federated States of">Micronesia, Federated States of</option>
+        <option value="Moldova, Republic of">Moldova, Republic of</option>
+        <option value="Monaco">Monaco</option>
+        <option value="Mongolia">Mongolia</option>
+        <option value="Montenegro">Montenegro</option>
+        <option value="Montserrat">Montserrat</option>
+        <option value="Morocco">Morocco</option>
+        <option value="Mozambique">Mozambique</option>
+        <option value="Myanmar">Myanmar</option>
+        <option value="Namibia">Namibia</option>
+        <option value="Nauru">Nauru</option>
+        <option value="Nepal">Nepal</option>
+        <option value="Netherlands">Netherlands</option>
+        <option value="Netherlands Antilles">Netherlands Antilles</option>
+        <option value="New Caledonia">New Caledonia</option>
+        <option value="New Zealand">New Zealand</option>
+        <option value="Nicaragua">Nicaragua</option>
+        <option value="Niger">Niger</option>
+        <option value="Nigeria">Nigeria</option>
+        <option value="Niue">Niue</option>
+        <option value="Norfolk Island">Norfolk Island</option>
+        <option value="Northern Mariana Islands">Northern Mariana Islands</option>
+        <option value="Norway">Norway</option>
+        <option value="Oman">Oman</option>
+        <option value="Pakistan">Pakistan</option>
+        <option value="Palau">Palau</option>
+        <option value="Palestinian Territory, Occupied">Palestinian Territory, Occupied</option>
+        <option value="Panama">Panama</option>
+        <option value="Papua New Guinea">Papua New Guinea</option>
+        <option value="Paraguay">Paraguay</option>
+        <option value="Peru">Peru</option>
+        <option value="Philippines">Philippines</option>
+        <option value="Pitcairn">Pitcairn</option>
+        <option value="Poland">Poland</option>
+        <option value="Portugal">Portugal</option>
+        <option value="Puerto Rico">Puerto Rico</option>
+        <option value="Qatar">Qatar</option>
+        <option value="Reunion">Reunion</option>
+        <option value="Romania">Romania</option>
+        <option value="Russian Federation">Russian Federation</option>
+        <option value="Rwanda">Rwanda</option>
+        <option value="Saint Helena">Saint Helena</option>
+        <option value="Saint Kitts and Nevis">Saint Kitts and Nevis</option>
+        <option value="Saint Lucia">Saint Lucia</option>
+        <option value="Saint Pierre and Miquelon">Saint Pierre and Miquelon</option>
+        <option value="Saint Vincent and The Grenadines">Saint Vincent and The Grenadines</option>
+        <option value="Samoa">Samoa</option>
+        <option value="San Marino">San Marino</option>
+        <option value="Sao Tome and Principe">Sao Tome and Principe</option>
+        <option value="Saudi Arabia">Saudi Arabia</option>
+        <option value="Senegal">Senegal</option>
+        <option value="Serbia">Serbia</option>
+        <option value="Seychelles">Seychelles</option>
+        <option value="Sierra Leone">Sierra Leone</option>
+        <option value="Singapore">Singapore</option>
+        <option value="Slovakia">Slovakia</option>
+        <option value="Slovenia">Slovenia</option>
+        <option value="Solomon Islands">Solomon Islands</option>
+        <option value="Somalia">Somalia</option>
+        <option value="South Africa">South Africa</option>
+        <option value="South Georgia and The South Sandwich Islands">South Georgia and The South Sandwich Islands
+        </option>
+        <option value="Spain">Spain</option>
+        <option value="Sri Lanka">Sri Lanka</option>
+        <option value="Sudan">Sudan</option>
+        <option value="Suriname">Suriname</option>
+        <option value="Svalbard and Jan Mayen">Svalbard and Jan Mayen</option>
+        <option value="Swaziland">Swaziland</option>
+        <option value="Sweden">Sweden</option>
+        <option value="Switzerland">Switzerland</option>
+        <option value="Syrian Arab Republic">Syrian Arab Republic</option>
+        <option value="Taiwan">Taiwan</option>
+        <option value="Tajikistan">Tajikistan</option>
+        <option value="Tanzania, United Republic of">Tanzania, United Republic of</option>
+        <option value="Thailand">Thailand</option>
+        <option value="Timor-leste">Timor-leste</option>
+        <option value="Togo">Togo</option>
+        <option value="Tokelau">Tokelau</option>
+        <option value="Tonga">Tonga</option>
+        <option value="Trinidad and Tobago">Trinidad and Tobago</option>
+        <option value="Tunisia">Tunisia</option>
+        <option value="Turkey">Turkey</option>
+        <option value="Turkmenistan">Turkmenistan</option>
+        <option value="Turks and Caicos Islands">Turks and Caicos Islands</option>
+        <option value="Tuvalu">Tuvalu</option>
+        <option value="Uganda">Uganda</option>
+        <option value="Ukraine">Ukraine</option>
+        <option value="United Arab Emirates">United Arab Emirates</option>
+        <option value="United Kingdom">United Kingdom</option>
+        <option value="United States">United States</option>
+        <option value="United States Minor Outlying Islands">United States Minor Outlying Islands</option>
+        <option value="Uruguay">Uruguay</option>
+        <option value="Uzbekistan">Uzbekistan</option>
+        <option value="Vanuatu">Vanuatu</option>
+        <option value="Venezuela">Venezuela</option>
+        <option value="Viet Nam">Viet Nam</option>
+        <option value="Virgin Islands, British">Virgin Islands, British</option>
+        <option value="Virgin Islands, U.S.">Virgin Islands, U.S.</option>
+        <option value="Wallis and Futuna">Wallis and Futuna</option>
+        <option value="Western Sahara">Western Sahara</option>
+        <option value="Yemen">Yemen</option>
+        <option value="Zambia">Zambia</option>
+        <option value="Zimbabwe">Zimbabwe</option>
+      </select>
+
+      <br>
+      <br>
+
+      <label>Question 3: How many continent in the world?</label><br>
+      <textarea id="q3-answer" rows="3"></textarea><br>
+      <label>Question 4: How many moon earth has? </label><br>
+      <textarea id="q4-answer" rows="3"></textarea><br>
+      <label>Question 5: What is the planet the moon revolve around ?</label><br>
+      <textarea id="q5-answer" rows="3"></textarea><br>
+      <label>Question 6: Select the triangle.</label><br>
+      <input type="radio" id="triangle" name="shape" value="triangle">
+      <label for="triangle"><img src="triangle.png" alt="Triangle"></label><br>
+      <input type="radio" id="square" name="shape" value="square">
+      <label for="square"><img src="square.png" alt="Square"></label><br>
+      <input type="radio" id="circle" name="shape" value="circle">
+      <label for="circle"><img src="circle.png" alt="Circle"></label><br><br>
+
+      <label>Question 7: which of the following is green ?</label><br>
+      <input type="radio" id="pink" name="colour" value="pink">
+      <label for="triangle"><img src="pink.png" alt="pink"></label><br>
+      <input type="radio" id="green" name="colour" value="green">
+      <label for="square"><img src="green.png" alt="green"></label><br>
+      <input type="radio" id="blue" name="colour" value="blue">
+      <label for="circle"><img src="blue.png" alt="blue"></label><br><br>
 
 
-<label>Question 8: which of the following is tiger ?</label><br>
-<input type="radio" id="tiger" name="animal" value="tiger">
-<label for="tiger"><img src="tiger.png" alt="tiger"></label><br>
-<input type="radio" id="lion" name="animal" value="lion">
-<label for="lion"><img src="lion.png" alt="lion"></label><br>
-<input type="radio" id="elephant" name="animal" value="elephant">
-<label for="elephant"><img src="elephant.png" alt="elephant"></label><br><br>
+      <label>Question 8: which of the following is tiger ?</label><br>
+      <input type="radio" id="tiger" name="animal" value="tiger">
+      <label for="tiger"><img src="tiger.png" alt="tiger"></label><br>
+      <input type="radio" id="lion" name="animal" value="lion">
+      <label for="lion"><img src="lion.png" alt="lion"></label><br>
+      <input type="radio" id="elephant" name="animal" value="elephant">
+      <label for="elephant"><img src="elephant.png" alt="elephant"></label><br><br>
 
-<label>Question 9: which of the following is a 2 wheeler ?</label><br>
-<input type="radio" id="car" name="vehicle" value="car">
-<label for="car"><img src="car.png" alt="car"></label><br>
-<input type="radio" id="bike" name="vehicle" value="bike">
-<label for="bike"><img src="bike.png" alt="bike"></label><br>
-<input type="radio" id="plane" name="vehicle" value="plane">
-<label for="plane"><img src="plane.png" alt="plane"></label><br><br>
-
-
+      <label>Question 9: which of the following is a 2 wheeler ?</label><br>
+      <input type="radio" id="car" name="vehicle" value="car">
+      <label for="car"><img src="car.png" alt="car"></label><br>
+      <input type="radio" id="bike" name="vehicle" value="bike">
+      <label for="bike"><img src="bike.png" alt="bike"></label><br>
+      <input type="radio" id="plane" name="vehicle" value="plane">
+      <label for="plane"><img src="plane.png" alt="plane"></label><br><br>
 
 
 
@@ -196,62 +510,113 @@ body {
 
 
 
+      <label>Question 10: Which of the following is Pyramid of Giza?</label><br>
+      <div class="slideshow-container">
+        <div class="mySlides fade">
+          <div class="numbertext">1 / 3</div>
+          <img src="maxico-pyramid.jpg" style="width:100%" alt="Pyramid of Mexico">
+        </div>
+        <div class="mySlides fade">
+          <div class="numbertext">2 / 3</div>
+          <img src="paris-pyramid.jpg" style="width:100%;" alt="Pyramid of Paris">
+        </div>
+        <div class="mySlides fade">
+          <div class="numbertext">3 / 3</div>
+          <img src="pyramid.jpg" style="width:100%" alt="Pyramid of Giza">
+        </div>
+        <a class="prev" onclick="plusSlides(-1)">❮</a>
+        <a class="next" onclick="plusSlides(1)">❯</a>
+      </div>
+      <br>
 
 
 
 
-				<style>
-label img {
-	display: block;
-	margin-left: 10px;
-	width: 50px;
-	height: 50px;
-}
-				</style>
 
 
 
 
-				<button id="submit-btn">Submit</button>
-			</form>
-		</div>
 
-		<script>
-			const startBtn = document.getElementById("start-btn");
-			const surveyContainer = document.getElementById("survey-container");
-			const submitBtn = document.getElementById("submit-btn");
+      <button id="submit-btn">Submit</button>
+    </form>
+  </div>
 
-			startBtn.addEventListener("click", () => {
-							surveyContainer.style.display = "block";
-							startBtn.style.display = "none";
-							const startTime = new Date();
-							submitBtn.addEventListener("click", () => {
-											const endTime = new Date();
-											const surveyResults = {
-															name: document.getElementById("name").value,
-															device: document.getElementById("device").value,
-															q1: document.getElementById("q1-answer").value,
-															q2: document.getElementById("q2-answer").value,
-															q3: document.getElementById("q3-answer").value,
-															q4: document.getElementById("q4-answer").value,
-															q5: document.getElementById("q5-answer").value,
-															q6: document.querySelector('input[name="shape"]:checked').value,
-															q7: document.querySelector('input[name="colour"]:checked').value,
-                                                                                                                        q8: document.querySelector('input[name="animal"]:checked').value,  
-                                                                                                                        q9: document.querySelector('input[name="vehicle"]:checked').value,  
-															time: (endTime - startTime) / 1000 // time in seconds
-														};
-											const fileContent = JSON.stringify(surveyResults);
-											const fileBlob = new Blob([fileContent], { type: "text/plain" });
-											const fileUrl = URL.createObjectURL(fileBlob);
-											const fileLink = document.createElement("a");
-											fileLink.href = fileUrl;
-											fileLink.download = "survey-results.txt";
-											document.body.appendChild(fileLink);
-											fileLink.click();
-											document.body.removeChild(fileLink);
-										});
-						});
-		</script>
-	</body>
+  <script>
+    const startBtn = document.getElementById("start-btn");
+    const surveyContainer = document.getElementById("survey-container");
+    const submitBtn = document.getElementById("submit-btn");
+
+    var slideIndex = 1;
+    
+    function plusSlides(n) {
+      showSlides(slideIndex += n);
+    }
+    function currentSlide(n) {
+      showSlides(slideIndex = n);
+    }
+    function showSlides(n) {
+      var i;
+      var slides = document.getElementsByClassName("mySlides");
+      var dots = document.getElementsByClassName("dot");
+      if (n > slides.length) { slideIndex = 1 }
+      if (n < 1) { slideIndex = slides.length }
+      for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+      }
+      for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+      }
+      slides[slideIndex - 1].style.display = "block";
+      dots[slideIndex - 1].className += " active";
+    }
+
+    startBtn.addEventListener("click", () => {
+      surveyContainer.style.display = "block";
+      startBtn.style.display = "none";
+      const startTime = new Date();
+      submitBtn.addEventListener("click", () => {
+        const endTime = new Date();
+        let q10Answer = "";
+        switch (slideIndex) {
+          case 1:
+            q10Answer = "Pyramid of Mexico"
+            break;
+          case 2:
+            q10Answer = "Pyramid of Paris"
+            break;
+          case 3:
+            q10Answer = "Pyramid of Giza"
+            break;
+        }
+        const surveyResults = {
+          name: document.getElementById("name").value,
+          device: document.getElementById("device").value,
+          q1: document.getElementById("q1-answer").value,
+          q2: document.getElementById("q2-answer").value,
+          q3: document.getElementById("q3-answer").value,
+          q4: document.getElementById("q4-answer").value,
+          q5: document.getElementById("q5-answer").value,
+          q6: document.querySelector('input[name="shape"]:checked').value,
+          q7: document.querySelector('input[name="colour"]:checked').value,
+          q8: document.querySelector('input[name="animal"]:checked').value,
+          q9: document.querySelector('input[name="vehicle"]:checked').value,
+          q10: q10Answer,
+          time: (endTime - startTime) / 1000 // time in seconds
+        };
+        const fileContent = JSON.stringify(surveyResults);
+        const fileBlob = new Blob([fileContent], { type: "text/plain" });
+        const fileUrl = URL.createObjectURL(fileBlob);
+        const fileLink = document.createElement("a");
+        fileLink.href = fileUrl;
+        fileLink.download = "survey-results.txt";
+        document.body.appendChild(fileLink);
+        fileLink.click();
+        document.body.removeChild(fileLink);
+      });
+    });
+
+    showSlides(slideIndex);
+  </script>
+</body>
+
 </html>
